@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import AddTask from '../AddTask'
 import Item from '../TaskItem'
-import '../../App.css'
 import "../../App.css";
 
 function Column({ itemList, colTitle, color }) {
@@ -18,13 +17,13 @@ function Column({ itemList, colTitle, color }) {
     };
 
     return (
-        <div className="column">
-            <header className="columnHeading"> 
+        <div className="justify-center text-center md:container md:mx-auto">
+            <header className="text-center text-blue-500"> 
                 <h3>
                     {colTitle}
                 </h3>
             </header>
-            <div className="items">
+            <div className='justify-center text-center md:container md:mx-auto'>
             {
                 itemList.map((i, index) => (
                     <Item
@@ -45,7 +44,7 @@ function Column({ itemList, colTitle, color }) {
             ></AddTask>)}
 
             </div>
-            <button className="addNew break-after-column" onClick={openAddNewTaskModal}>
+            <button className="addNew" onClick={openAddNewTaskModal}>
                 + Add task
             </button>
         </div>

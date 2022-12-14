@@ -46,7 +46,7 @@
   font-family: 'Arial', sans-serif;
 }
 
-.column {
+/* .column {
   border: 1px solid #F1F1F1;
   background-color: #F1F1F1;
   border-radius: 5px;
@@ -56,9 +56,9 @@
   flex-direction: column;
   margin: 1em;
   padding: 1em;
-}
+} */
 
-.item {
+/* .item {
   padding: 1em;
   margin: 1em;
   width: 380px;
@@ -67,11 +67,11 @@
   height: 100px;
   background-color: white;
   cursor: pointer;
-}
+} */
 
-.columnHeading {
+/* .columnHeading {
   border-bottom: 1px solid lightgray;
-}
+} */
 
 .addNew { 
   padding: 1em;
