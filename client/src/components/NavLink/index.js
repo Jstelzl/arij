@@ -7,7 +7,7 @@ function NavTabs({ currentPage, handlePageChange }) {
   return (
 <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div className="container flex flex-wrap items-center justify-between mx-auto">
-  <a href="" className="flex items-center">
+  <a href="#MyPage" className="flex items-center">
     {/* logo */}
       <img src={LogoSmall} className="h-6 mr-3 sm:h-9" alt="Arij Logo" />
       <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Arij</span>
@@ -44,16 +44,30 @@ function NavTabs({ currentPage, handlePageChange }) {
           href="#MyPage" 
           onClick={() => handlePageChange("MyPage")}
           className={
-            currentPage === "MyPage" ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" : "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+            currentPage === "MyPage" ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" : "block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           }
         >
             Home</a>
         </li>
         <li>
-          <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+        <a 
+          href="#GroupPage" 
+          onClick={() => handlePageChange("Group Page")}
+          className={
+            currentPage === "Group Page" ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" : "block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          }
+        >
+            Groups</a>
         </li>
         <li>
-          <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+        <a 
+          href="#LogOut" 
+          onClick={() => handlePageChange("Log Out")}
+          className={
+            currentPage === "Log Out" ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" : "block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          }
+        >
+            Log Out</a>
         </li>
       </ul>
     </div>
@@ -64,60 +78,3 @@ function NavTabs({ currentPage, handlePageChange }) {
 }
 
 export default NavTabs;
-
-{/* <nav className="navbar navbar-expand-lg bg-dark">
-      <div className="container-fluid bg-dark justify-content-center">
-        <div className="bg-dark" id="navbarNav">
-          <ul className="nav bg-dark">
-            <li className="nav-item bg-dark">
-              <a
-                href="#aboutMe"
-                onClick={() => handlePageChange("About Me")}
-                // Check to see if the currentPage is `About`, and if so we use the active link className from bootstrap. Otherwise, we set it to a normal nav-link
-                className={
-                  currentPage === "About Me" ? "nav-link active text-info text-opacity-75 bg-dark" : "nav-link text-secondary"
-                }
-              >
-                about me
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                href="#portfolio"
-                onClick={() => handlePageChange("Portfolio")}
-                // Check to see if the currentPage is `Blog`, and if so we use the active link className from bootstrap. Otherwise, we set it to a normal nav-link
-                className={
-                  currentPage === "Portfolio" ? "nav-link active text-info text-opacity-75 bg-dark" : "nav-link text-secondary"
-                }
-              >
-                portfolio
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                href="#resume"
-                onClick={() => handlePageChange("Resume")}
-                // Check to see if the currentPage is `Contact`, and if so we use the active link className from bootstrap. Otherwise, we set it to a normal nav-link
-                className={
-                  currentPage === "Resume" ? "nav-link active text-info text-opacity-75 bg-dark" : "nav-link text-secondary"
-                }
-              >
-                resume
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                href="#contact"
-                onClick={() => handlePageChange("Contact")}
-                // Check to see if the currentPage is `Contact`, and if so we use the active link className from bootstrap. Otherwise, we set it to a normal nav-link
-                className={
-                  currentPage === "Contact" ? "nav-link active text-info text-opacity-75 bg-dark" : "nav-link text-secondary"
-                }
-              >
-                contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> */}

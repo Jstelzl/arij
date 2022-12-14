@@ -7,14 +7,14 @@ import LogOut from "../LogOut";
 import GroupPage from "../GroupPage";
 
 export default function PageContainer() {
-  const [currentPage, setCurrentPage] = useState("Log In");
+  const [currentPage, setCurrentPage] = useState("Login");
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
   const renderPage = () => {
     if (currentPage === "Login") return <Login />;
-    if (currentPage === "My Page") return <MyPage />;
+    if (currentPage === "Group Page") return <GroupPage />;
     if (currentPage === "Log Out") return <LogOut />;
-    return <GroupPage />;
+    return <MyPage />;
   };
 
   const handlePageChange = (page) => setCurrentPage(page);
