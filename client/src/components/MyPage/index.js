@@ -28,8 +28,8 @@ const mockData = [
 
 
 const getColumnSection = () => (
-  <div className="md:container md:mx-auto gap-2">
-  <section className='gap-2 columns-1 md:columns-3'>
+  <div>
+  <section>
     <Column
       itemList={mockData[0].tasks}
       colTitle={mockData[0].title}
@@ -54,15 +54,18 @@ const getColumnSection = () => (
 
 function MyPage() {
   return (
-    <div className="text-center md:container md:mx-auto">
-      <header className="text-center text-blue-900">
-        <h2>
+    <div className="content-center md:container md:mx-auto">
+       <header className="text-center text-blue-900">
+        <h2 className='text-center'>
           My Tasks
         </h2>
       </header>
+      <div className='gap-2 content-center md:columns-3'>
+     
 
       {getColumnSection()}
       
+    </div>
     </div>
   );
 }
