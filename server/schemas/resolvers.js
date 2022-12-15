@@ -7,12 +7,15 @@ const resolvers = {
     },
 
     groups: async () => {
-      return Group.find().populate("owner").populate("tickets");
+      return Group.find().populate("owner").populate("tickets").populate("members");
     },
 
     group: async (parent, { _id }) => {
       return Group.findOne({ _id });
     },
+    ticket: async(parent, {_id}) => {
+      return Ticket.findOne({ _id })
+    }
   },
 
   Mutation: {
@@ -25,8 +28,14 @@ const resolvers = {
     addGroup: async (parent, args) => {
       const group = await Group.create({
         groupName: args.groupName,
-        owner: "639a7ace08ad3d425249c443",
+        owner: "6398bfe5131e45352c419be3",
+        members: "6398bfe5131e45352c419be3"
       });
+
+      // Group.findByIdAndUpdate(
+      //   { _id: group._id},
+      //   { $addToSet: {members: "6398c131131e45352c419be7"}}
+      // )
       console.log(group);
 
       return { group };
@@ -43,13 +52,23 @@ const resolvers = {
       });
 
       await Group.findByIdAndUpdate(
-        { _id: "639a949c8549a946d1d2e094" },
+        { _id: "639b9646ee70435d00c1709f" },
         { $push: { tickets: ticket._id } }
       );
       console.log(ticket);
 
       return { ticket };
     },
+
+    editTicket: async (parent, args) => {
+      const updateTicket = await Ticket.findOneAndUpdate(
+        { _id: args.ticketId },
+        {status: args.status},
+        {new: true}
+      )
+      console.log(updateTicket)
+      return updateTicket
+    }
   },
 };
 

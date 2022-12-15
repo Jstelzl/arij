@@ -39,7 +39,8 @@ const typeDefs = gql`
     users: [User]
     groups: [Group]
     user(username: String!): User
-    group(_id: ID!): Group
+    group(groupId: ID!): Group
+    ticket(ticketId: ID!): Ticket
   }
 
   type Mutation {
@@ -47,6 +48,7 @@ const typeDefs = gql`
     addUser(username: String!, password: String!): User
     addGroup(groupName: String!): Group
     joinGroup(_id: ID!, groupName: String!): Group
+    editTicket(ticketId: ID!, status: String!): Ticket
     addTicket(
       ticketTitle: String!
       ticketBody: String!
@@ -55,7 +57,7 @@ const typeDefs = gql`
       dueBy: String!
       status: String!
     ): Ticket
-    editTicket(status: String!): Ticket
+    
   }
 `;
 
