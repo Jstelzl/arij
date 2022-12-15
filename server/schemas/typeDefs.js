@@ -23,7 +23,7 @@ const typeDefs = gql`
   type Group {
     _id: ID
     groupName: String
-    owner: [User]
+    owner: User
     createdAt: String
     members: [User]
     tickets: [Ticket]
@@ -37,6 +37,7 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
+    groups: [Group]
     user(username: String!): User
     group(_id: ID!): Group
   }
@@ -49,6 +50,7 @@ const typeDefs = gql`
     addTicket(
       ticketTitle: String!
       ticketBody: String!
+      createdBy: String!
       urgencyLevel: String!
       dueBy: String!
       status: String!
