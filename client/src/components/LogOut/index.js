@@ -3,7 +3,9 @@ import "../../App.css";
 
 function LogOut() {
   return (
-    <div>logout</div>
+    <div className="min-h-screen">
+      logout
+    </div>
   );
 }
 export default LogOut;

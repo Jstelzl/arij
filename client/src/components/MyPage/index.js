@@ -54,7 +54,7 @@ const getColumnSection = () => (
 
 function MyPage() {
   return (
-    <div className="content-center md:container md:mx-auto">
+    <div className="content-center md:container md:mx-auto min-h-screen">
        <header className="text-center text-blue-900">
         <h2 className='text-center'>
           My Tasks
