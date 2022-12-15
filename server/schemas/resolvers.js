@@ -7,7 +7,7 @@ const resolvers = {
     },
 
     groups: async () => {
-      return Group.find().populate("owner");
+      return Group.find().populate("owner").populate("tickets");
     },
 
     group: async (parent, { _id }) => {
@@ -30,6 +30,25 @@ const resolvers = {
       console.log(group);
 
       return { group };
+    },
+
+    addTicket: async (parent, args) => {
+      const ticket = await Ticket.create({
+        ticketTitle: args.ticketTitle,
+        ticketBody: args.ticketBody,
+        createdBy: args.createdBy,
+        urgencyLevel: args.urgencyLevel,
+        dueBy: args.dueBy,
+        status: args.status,
+      });
+
+      await Group.findByIdAndUpdate(
+        { _id: "639a949c8549a946d1d2e094" },
+        { $push: { tickets: ticket._id } }
+      );
+      console.log(ticket);
+
+      return { ticket };
     },
   },
 };
