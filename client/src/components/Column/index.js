@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import AddTask from '../AddTask'
 import Item from '../TaskItem'
 import "../../App.css";
-import { Droppable } from 'react-beautiful-dnd'
 
 function Column({ itemList, colTitle, color }) {
     const [showModal, setShowModal] = useState(false);
