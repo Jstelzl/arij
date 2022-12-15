@@ -13,7 +13,7 @@ const mockData = [
     input: '',
   },
   {
-    title: 'In progress',
+    title: 'In Progress',
     tasks: ['Task 5', 'Task 6'],
     color: 'purple',
     input: '',
@@ -56,9 +56,9 @@ function MyPage() {
   return (
     <div className="content-center md:container md:mx-auto">
        <header className="text-center text-blue-900">
-        <h2 className='text-center'>
+        <h1 className='text-center p-2 pb-4'>
           My Tasks
-        </h2>
+        </h1>
       </header>
       <div className='gap-2 content-center md:columns-3'>
      

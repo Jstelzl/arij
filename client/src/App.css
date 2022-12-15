@@ -39,50 +39,6 @@
 
 /* test */
 
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-} */
-
-/* .column {
-  border: 1px solid #F1F1F1;
-  background-color: #F1F1F1;
-  border-radius: 5px;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin: 1em;
-  padding: 1em;
-} */
-
-/* .item {
-  padding: 1em;
-  margin: 1em;
-  width: 380px;
-  border-top: 4px solid green;
-  border-radius: 5px;
-  height: 100px;
-  background-color: white;
-  cursor: pointer;
-} */
-
-/* .columnHeading {
-  border-bottom: 1px solid lightgray;
-} */
-
-/* .addNew { 
-  padding: 1em;
-  margin: 1em;
-  width: 380px;
-  border: 1px solid white;
-  background-color: white;
-  border-radius: 5px;
-  cursor: pointer;
-} */
-
 .modal {
   display: flex;
   align-items: center;
