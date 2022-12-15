@@ -1,4 +1,5 @@
 const User = require('./User');
-const Tickets = require('./Tickets');
+const Ticket = require('./Ticket');
+const Group = require('./Group');
 
-module.exports = { User, Tickets };
+module.exports = { User, Ticket, Group };

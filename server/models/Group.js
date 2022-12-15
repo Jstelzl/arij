@@ -1,4 +1,3 @@
-const { SchemaMetaFieldDef } = require('graphql');
 const { Schema, model } = require('mongoose');
 
 const groupSchema = new Schema(
@@ -15,9 +14,13 @@ const groupSchema = new Schema(
             type: Date,
             default: Date.now,
         },
+        members: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
         tickets: [{
             type: Schema.Types.ObjectId,
-            ref: 'tickets'
+            ref: 'Ticket'
         }]
     })
 
