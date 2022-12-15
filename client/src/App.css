@@ -157,3 +157,7 @@ input {
 .actionButtons .cancel {
   background: white;
 }
+
+.login-border-color {
+  border-color: rgb(30 58 138);
+}
