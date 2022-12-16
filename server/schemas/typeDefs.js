@@ -23,7 +23,7 @@ const typeDefs = gql`
   type Group {
     _id: ID
     groupName: String
-    owner: [User]
+    owner: User
     createdAt: String
     members: [User]
     tickets: [Ticket]
@@ -37,23 +37,27 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
+    groups: [Group]
     user(username: String!): User
-    group(_id: ID!): Group
+    group(groupId: ID!): Group
+    ticket(ticketId: ID!): Ticket
   }
 
   type Mutation {
-    login(username: String!, password: String!): User
-    addUser(username: String!, password: String!): User
+    login(username: String!, password: String!): Auth
+    addUser(username: String!, password: String!): Auth
     addGroup(groupName: String!): Group
-    joinGroup(_id: ID!, groupName: String!): Group
+    joinGroup(groupId: ID!): Group
+    editTicket(ticketId: ID!, status: String!): Ticket
     addTicket(
       ticketTitle: String!
       ticketBody: String!
+      createdBy: String!
       urgencyLevel: String!
       dueBy: String!
       status: String!
+      groupId: ID!
     ): Ticket
-    editTicket(status: String!): Ticket
   }
 `;
 
