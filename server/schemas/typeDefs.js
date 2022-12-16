@@ -44,8 +44,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    login(username: String!, password: String!): User
-    addUser(username: String!, password: String!): User
+    login(username: String!, password: String!): Auth
+    addUser(username: String!, password: String!): Auth
     addGroup(groupName: String!): Group
     joinGroup(groupId: ID!): Group
     editTicket(ticketId: ID!, status: String!): Ticket
@@ -56,8 +56,8 @@ const typeDefs = gql`
       urgencyLevel: String!
       dueBy: String!
       status: String!
+      groupId: ID!
     ): Ticket
-    
   }
 `;
 
