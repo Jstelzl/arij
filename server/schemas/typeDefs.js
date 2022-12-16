@@ -47,7 +47,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): User
     addUser(username: String!, password: String!): User
     addGroup(groupName: String!): Group
-    joinGroup(_id: ID!, groupName: String!): Group
+    joinGroup(groupId: ID!): Group
     editTicket(ticketId: ID!, status: String!): Ticket
     addTicket(
       ticketTitle: String!

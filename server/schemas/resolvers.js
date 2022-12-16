@@ -25,17 +25,26 @@ const resolvers = {
       return { user };
     },
 
+    joinGroup: async(parent, args) => {
+      const user = await User.findOneAndUpdate(
+        { _id: "change to context"},
+        { $addToSet: {groups: args.groupId}}
+      )
+
+      await Group.findOneAndUpdate(
+        {_id: args.groupId},
+        { $addToSet: {members: "change to context"}}
+      )
+
+      return { user }
+    },
+
     addGroup: async (parent, args) => {
       const group = await Group.create({
         groupName: args.groupName,
         owner: "6398bfe5131e45352c419be3",
         members: "6398bfe5131e45352c419be3"
       });
-
-      // Group.findByIdAndUpdate(
-      //   { _id: group._id},
-      //   { $addToSet: {members: "6398c131131e45352c419be7"}}
-      // )
       console.log(group);
 
       return { group };
