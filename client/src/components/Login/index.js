@@ -29,7 +29,7 @@ function Login() {
       </ul>
       <div id="defaultTabContent">
         {/* Login Form Tab */}
-        <form className="hidden max-w-md mx-auto my-auto " id="login" role="tabpanel" aria-labelledby="login-tab">
+        <form className=" max-w-md mx-auto my-auto " id="login" role="tabpanel" aria-labelledby="login-tab">
           <div className="flex flex-wrap -mx-3 mb-6 my-12">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -98,7 +98,7 @@ function Login() {
             </button>
           </div>
         </form>
-        }
+        
         {/* Login Form Tab */}
         
         {/* End Login Form Tab */}
