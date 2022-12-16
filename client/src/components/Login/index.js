@@ -4,7 +4,7 @@ import "../../App.css";
 function Login() {
 
   return (
-    <div className="w-full bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 min-h-screen">
       <ul className="flex flex-wrap text-sm font-medium text-center text-blue-900 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
         <li className="mr-2">
           <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true" className="inline-block p-4 text-blue-900 rounded-tl-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500">Login</button>
@@ -13,7 +13,7 @@ function Login() {
           <button id="services-tab" data-tabs-target="#services" type="button" role="tab" aria-controls="services" aria-selected="false" className="inline-block p-4 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300">Sign Up</button>
         </li>
       </ul>
-      <form className="w-full max-w-lg max-w-md content-center sm:mx-auto min-h-screen">
+      <form className="w-full max-w-lg max-w-md content-center sm:mx-auto margin ">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
