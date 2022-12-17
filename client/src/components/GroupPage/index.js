@@ -56,7 +56,7 @@ function GroupPage() {
   return (
     <div className="content-center md:container md:mx-auto min-h-screen">
        <header className="text-center text-blue-900">
-        <h2 className='text-center'>
+        <h2 className='text-center p-2 pb-4'>
           GroupName Tasks
         </h2>
       </header>
