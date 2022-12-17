@@ -1,11 +1,45 @@
-import React, { useState } from "react";
+ {/* <>
+        <div className='modal'>
+            <div className='modalWrapper'>
+                <h3 className="p1 m1">
+                    Add task in {columnTitle}
+                </h3>
+                <p className="mtl2">Task</p>
+               <input className="m2 mt0" value={task} onChange={(e) => setTask(e.target.value)}></input> 
+               <div className="actionButtons">
+                   <button className="cancel m1" onClick={() => setShowModal(false)}>Cancel</button>
+                   <button className="save m1" onClick={() => addItem(task)}>Save</button>
+               </div>
+            </div>
+        </div>
+        </> */}
+
+
+
+
+        import React, { useState } from "react";
 
 function Modal({ setShowModal, columnTitle, addItem }) {
   const [task, setTask] = useState("");
 
   return (
- <>
-        <div className='modal'>
+    <React.Fragment>
+      {/* <!-- Modal toggle --> */}
+      <button
+        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button"
+        data-modal-toggle="authentication-modal"
+      >
+        + Add Task
+      </button>
+
+      {/* <!-- Main modal --> */}
+      <div
+        id="authentication-modal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+      >
         <div class="relative w-full h-full max-w-md md:h-auto">
           {/* <!-- Modal content --> */}
           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -117,8 +151,8 @@ function Modal({ setShowModal, columnTitle, addItem }) {
             </div>
           </div>
         </div>
-     </div>
- </> 
+      </div>
+    </React.Fragment>
   );
 }
 
