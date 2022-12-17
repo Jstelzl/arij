@@ -18,7 +18,7 @@ function Column({ itemList, colTitle, color }) {
 
     return (
         <div className="justify-center content-center text-center md:container md:mx-auto border-2 rounded-md break-after-column">
-            <header className="text-center text-blue-500"> 
+            <header className="text-center text-blue-800"> 
                 <h3>
                     {colTitle}
                 </h3>
