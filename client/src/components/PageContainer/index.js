@@ -3,7 +3,6 @@ import NavLink from "../NavLink";
 import Footer from "../Footer";
 import Login from "../Login";
 import MyPage from "../MyPage";
-import LogOut from "../LogOut";
 import GroupPage from "../GroupPage";
 import DataPage from "../DataPage";
 
@@ -14,7 +13,7 @@ export default function PageContainer() {
   const renderPage = () => {
     if (currentPage === "Login") return <Login />;
     if (currentPage === "Group Page") return <GroupPage />;
-    if (currentPage === "Log Out") return <LogOut />;
+    if (currentPage === "Log Out") return <Login />;
     if (currentPage === "Data Page") return <DataPage />;
     return <MyPage />;
   };
