@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import { Navigate } from "react-router-dom";
 
 function Login() {
   const [formState, setFormState] = useState({ username: "", password: "" });
@@ -61,6 +62,12 @@ function Login() {
       console.log(loginState);
     }
   };
+
+  const loggedIn = Auth.loggedIn();
+
+  if (loggedIn) {
+    return <Navigate to="/my-tasks" />;
+  }
 
   return (
     <div className="w-full bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 min-h-screen">

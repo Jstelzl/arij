@@ -2,6 +2,7 @@ import React from "react";
 import LogoNav from "../../assets/logos/check-logo-nav.png";
 import Auth from "../../utils/auth";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Here we are using object destructuring assignment to pluck off our variables from the props object
 // We assign them to their own variable names
@@ -14,7 +15,7 @@ function NavTabs() {
   return (
     <nav className="bg-slate-200 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="#MyPage" className="flex items-center">
+        <button className="flex items-center">
           {/* logo */}
           <img
             src={LogoNav}
@@ -24,7 +25,7 @@ function NavTabs() {
           <span className="text-blue-900 self-center text-xl font-bold whitespace-nowrap dark:text-white">
             Arij
           </span>
-        </a>
+        </button>
         {/* search function */}
         <div className="flex md:order-2">
           <button
@@ -134,7 +135,7 @@ function NavTabs() {
                     : "block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-500 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 }
               >
-                Home
+                <Link to={"/my-tasks"}>My Tasks</Link>
               </button>
             </li>
             <li>
@@ -146,7 +147,7 @@ function NavTabs() {
                     : "block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-500 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 }
               >
-                Groups
+                <Link to={"/group/a"}>Groups</Link>
               </button>
             </li>
             <li>
