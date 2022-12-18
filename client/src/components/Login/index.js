@@ -1,28 +1,12 @@
 import React from "react";
 import "../../App.css";
 import { useState } from "react";
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER, ADD_USER } from '../../utils/mutations';
-import Auth from '../../utils/auth';
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 function Login() {
-<<<<<<< HEAD
-  const [loginstate, setloginstate] = useState(true);
-
-  const handlePage = (event) => {
-    const page = event.target.id;
-    console.log(event.target.id);
-    if (page === "login-tab") {
-      setloginstate(true);
-      console.log(loginstate);
-    } else {
-      setloginstate(false);
-      console.log(loginstate);
-    }
-  };
-
-=======
-  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [formState, setFormState] = useState({ username: "", password: "" });
   const [loginState, setloginState] = useState(true);
   const [login, loginError] = useMutation(LOGIN_USER);
   const [addUser, signupError] = useMutation(ADD_USER);
@@ -38,49 +22,46 @@ function Login() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    if(loginState){
+    if (loginState) {
       try {
         const { data } = await login({
-          variables: { ...formState }
+          variables: { ...formState },
         });
-    
+
         Auth.login(data.login.token);
       } catch (e) {
         console.error(e);
       }
       // clear form values
       setFormState({
-        username: '',
-        password: '',
+        username: "",
+        password: "",
       });
     } else {
       try {
         // execute addUser mutation and pass in variable data from form
         const { data } = await addUser({
-          variables: { ...formState }
+          variables: { ...formState },
         });
         Auth.login(data.addUser.token);
-        console.log(data)
-  
+        console.log(data);
       } catch (e) {
         console.error(e);
       }
     }
-    
   };
 
   const handlePage = (event) => {
-    const page = event.target.id
+    const page = event.target.id;
     if (page === "login-tab") {
-      setloginState(true)
-      console.log(loginState)
+      setloginState(true);
+      console.log(loginState);
     } else {
-      setloginState(false)
-      console.log(loginState)
+      setloginState(false);
+      console.log(loginState);
     }
-  }
-  
->>>>>>> 6580384c2ca053ac2921d159a3535d76d436a58e
+  };
+
   return (
     <div className="w-full bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 min-h-screen">
       <ul
@@ -118,7 +99,13 @@ function Login() {
       </ul>
       <div id="defaultTabContent">
         {/* Login Form Tab */}
-        <form  onSubmit={handleFormSubmit}className=" max-w-md mx-auto my-auto " id="login" role="tabpanel" aria-labelledby="login-tab">
+        <form
+          onSubmit={handleFormSubmit}
+          className=" max-w-md mx-auto my-auto "
+          id="login"
+          role="tabpanel"
+          aria-labelledby="login-tab"
+        >
           <div className="flex flex-wrap -mx-3 mb-6 my-12">
             <div className="w-full px-3 mb-6 md:mb-0">
               <label
@@ -127,20 +114,41 @@ function Login() {
               >
                 User Name
               </label>
-              <input onChange={handleChange} name='username' value={formState.username} className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Santa" />
+              <input
+                onChange={handleChange}
+                name="username"
+                value={formState.username}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="grid-first-name"
+                type="text"
+                placeholder="Santa"
+              />
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password" >
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="grid-password"
+              >
                 Password
               </label>
-              <input onChange={handleChange} name='password' value={formState.password}className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="********" />
-              {loginError.error ?
-              <p className="text-gray-600 text-xs italic text-red-500">incorrect credentials</p>:
-              <p></p>
-              }
-              
+              <input
+                onChange={handleChange}
+                name="password"
+                value={formState.password}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-password"
+                type="password"
+                placeholder="********"
+              />
+              {loginError.error ? (
+                <p className="text-gray-600 text-xs italic text-red-500">
+                  incorrect credentials
+                </p>
+              ) : (
+                <p></p>
+              )}
             </div>
           </div>
           <div>
@@ -155,13 +163,30 @@ function Login() {
         {/* End Login Form Tab */}
 
         {/* SignUp form Tab */}
-        <form onSubmit={handleFormSubmit} className="hidden max-w-md mx-auto my-auto " role="tabpanel" id="signup" aria-labelledby="signup-tab">
+        <form
+          onSubmit={handleFormSubmit}
+          className="hidden max-w-md mx-auto my-auto "
+          role="tabpanel"
+          id="signup"
+          aria-labelledby="signup-tab"
+        >
           <div className="flex flex-wrap -mx-3 mb-6 my-12">
             <div className="w-full px-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name" >
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="grid-first-name"
+              >
                 User Name
               </label>
-              <input onChange={handleChange} name='username' value={formState.username} className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Santa" />
+              <input
+                onChange={handleChange}
+                name="username"
+                value={formState.username}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="grid-first-name"
+                type="text"
+                placeholder="Santa"
+              />
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
@@ -172,11 +197,22 @@ function Login() {
               >
                 Password
               </label>
-              <input onChange={handleChange} name='password' value={formState.password} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="********" />
-              {signupError.error ?
-              <p className="text-gray-600 text-xs italic text-red-500">Username already in use</p>:
-              <p></p>
-              }
+              <input
+                onChange={handleChange}
+                name="password"
+                value={formState.password}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-password"
+                type="password"
+                placeholder="********"
+              />
+              {signupError.error ? (
+                <p className="text-gray-600 text-xs italic text-red-500">
+                  Username already in use
+                </p>
+              ) : (
+                <p></p>
+              )}
             </div>
           </div>
           <div>
