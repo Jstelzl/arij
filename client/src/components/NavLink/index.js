@@ -1,9 +1,18 @@
 import React from "react";
 import LogoNav from "../../assets/logos/check-logo-nav.png"
+import Auth from '../../utils/auth';
+import { useState } from "react";
 
 // Here we are using object destructuring assignment to pluck off our variables from the props object
 // We assign them to their own variable names
-function NavTabs({ currentPage, handlePageChange }) {
+function NavTabs() {
+  const loggedIn = Auth.loggedIn()
+  
+  const [currentPage, setCurrentPage] = useState("Login");
+  const handlePageChange = (page) => setCurrentPage(page);
+
+
+
   return (
 <nav className="bg-slate-200 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -70,14 +79,19 @@ function NavTabs({ currentPage, handlePageChange }) {
             Data</a>
         </li>
         <li>
-        <a 
+          {loggedIn ?
+          <button 
           href="#LogOut" 
-          onClick={() => handlePageChange("Log Out")}
+          onClick={() => Auth.logout()}
           className={
             currentPage === "Log Out" ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white" : "block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-500 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           }
         >
-            Log Out</a>
+            Log Out</button>
+            :
+            <span></span>
+          }
+        
         </li>
       </ul>
     </div>
