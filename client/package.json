@@ -2,7 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
+    "@apollo/client": "^3.7.2",
     "@dnd-kit/core": "^6.0.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -10,6 +12,7 @@
     "flowbite": "^1.5.5",
     "flowbite-datepicker": "^1.2.2",
     "flowbite-react": "^0.3.7",
+    "jwt-decode": "^3.1.2",
     "next": "^13.0.6",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
