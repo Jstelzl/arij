@@ -3,6 +3,13 @@ import PageContainer from "./components/PageContainer";
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+import NavLink from "./components/NavLink";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
+import MyPage from "./components/MyPage";
+import GroupPage from "./components/GroupPage";
+import DataPage from "./components/DataPage";
+
 const httpLink = createHttpLink({
     uri: '/graphql',
   });
@@ -22,10 +29,16 @@ const httpLink = createHttpLink({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
+
+//   const [currentPage, setCurrentPage] = useState("Login");
+//   const handlePageChange = (page) => setCurrentPage(page);
+  
 function App() {
     return (
         <ApolloProvider client={client}>
-        <PageContainer />
+        <NavLink />
+        <Login />
+        <Footer />
         </ApolloProvider>
     )
 }

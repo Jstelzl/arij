@@ -1,12 +1,18 @@
 import React from "react";
 import LogoNav from "../../assets/logos/check-logo-nav.png"
 import Auth from '../../utils/auth';
+import { useState } from "react";
 
 // Here we are using object destructuring assignment to pluck off our variables from the props object
 // We assign them to their own variable names
-function NavTabs({ currentPage, handlePageChange }) {
+function NavTabs() {
   const loggedIn = Auth.loggedIn()
-  console.log(loggedIn)
+  
+  const [currentPage, setCurrentPage] = useState("Login");
+  const handlePageChange = (page) => setCurrentPage(page);
+
+
+
   return (
 <nav className="bg-slate-200 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div className="container flex flex-wrap items-center justify-between mx-auto">
