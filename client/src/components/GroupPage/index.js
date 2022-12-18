@@ -13,7 +13,7 @@ const mockData = [
     input: '',
   },
   {
-    title: 'In progress',
+    title: 'In Progress',
     tasks: ['Task 5', 'Task 6'],
     color: 'purple',
     input: '',
