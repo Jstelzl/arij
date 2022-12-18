@@ -8,8 +8,8 @@ import Auth from '../../utils/auth';
 function Login() {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [loginState, setloginState] = useState(true);
-  const [login] = useMutation(LOGIN_USER);
-  const [addUser] = useMutation(ADD_USER);
+  const [login, loginError] = useMutation(LOGIN_USER);
+  const [addUser, signupError] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -55,7 +55,6 @@ function Login() {
 
   const handlePage = (event) => {
     const page = event.target.id
-    console.log(event.target.id)
     if (page === "login-tab") {
       setloginState(true)
       console.log(loginState)
@@ -64,6 +63,7 @@ function Login() {
       console.log(loginState)
     }
   }
+  
   return (
     <div className="w-full bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 min-h-screen">
       <ul className=" flex flex-wrap text-sm font-medium text-blue-900 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" 
@@ -83,8 +83,7 @@ function Login() {
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 User Name
               </label>
-              <input onChange={handleChange} name='username' value={formState.username} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Santa" />
-              <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+              <input onChange={handleChange} name='username' value={formState.username} className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Santa" />
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
@@ -93,7 +92,11 @@ function Login() {
                 Password
               </label>
               <input onChange={handleChange} name='password' value={formState.password}className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="********" />
-              <p className="text-gray-600 text-xs italic"></p>
+              {loginError.error ?
+              <p className="text-gray-600 text-xs italic text-red-500">incorrect credentials</p>:
+              <p></p>
+              }
+              
             </div>
           </div>
           <div>
@@ -114,8 +117,7 @@ function Login() {
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name" >
                 User Name
               </label>
-              <input onChange={handleChange} name='username' value={formState.username} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Santa" />
-              <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+              <input onChange={handleChange} name='username' value={formState.username} className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Santa" />
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
@@ -124,7 +126,10 @@ function Login() {
                 Password
               </label>
               <input onChange={handleChange} name='password' value={formState.password} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="********" />
-              <p className="text-gray-600 text-xs italic"></p>
+              {signupError.error ?
+              <p className="text-gray-600 text-xs italic text-red-500">Username already in use</p>:
+              <p></p>
+              }
             </div>
           </div>
           <div>
