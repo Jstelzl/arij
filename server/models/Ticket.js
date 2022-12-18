@@ -26,6 +26,7 @@ const ticketSchema = new Schema({
   },
   status: {
     type: String,
+    default: "to do"
   },
 });
 
