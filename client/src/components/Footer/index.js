@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../../App.css'
 
 function Footer() {
@@ -11,12 +11,6 @@ function Footer() {
           <a href="#" className="mr-4 hover:underline md:mr-6 ">About</a>
         </li>
         <li>
-          <a href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-        </li>
-        <li>
-          <a href="#" className="mr-4 hover:underline md:mr-6">Licensing</a>
-        </li>
-        <li>
           <a href="#" className="hover:underline">Contact</a>
         </li>
       </ul>
@@ -25,5 +19,3 @@ function Footer() {
   );
 }
 export default Footer
-
-// flex flex-col min-h-screen
