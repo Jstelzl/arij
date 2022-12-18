@@ -1,9 +1,12 @@
 import React from "react";
 import LogoNav from "../../assets/logos/check-logo-nav.png"
+import Auth from '../../utils/auth';
 
 // Here we are using object destructuring assignment to pluck off our variables from the props object
 // We assign them to their own variable names
 function NavTabs({ currentPage, handlePageChange }) {
+  const loggedIn = Auth.loggedIn()
+  console.log(loggedIn)
   return (
 <nav className="bg-slate-200 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -70,7 +73,8 @@ function NavTabs({ currentPage, handlePageChange }) {
             Data</a>
         </li>
         <li>
-        <a 
+          {loggedIn ?
+          <a 
           href="#LogOut" 
           onClick={() => handlePageChange("Log Out")}
           className={
@@ -78,6 +82,10 @@ function NavTabs({ currentPage, handlePageChange }) {
           }
         >
             Log Out</a>
+            :
+            <span></span>
+          }
+        
         </li>
       </ul>
     </div>
