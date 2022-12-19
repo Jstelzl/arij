@@ -14,6 +14,7 @@ function Column({ itemList, colTitle, color }) {
         console.log(task);
         itemList.push(task);
         setShowModal(false);
+    
     };
 
     return (
@@ -29,6 +30,7 @@ function Column({ itemList, colTitle, color }) {
                 {
                     itemList.map((i, index) => (
                         <Item
+                            openAddNewTaskModal={openAddNewTaskModal}
                             key={index}
                             data={i}
                             color={color}
