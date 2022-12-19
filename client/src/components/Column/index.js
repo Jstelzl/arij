@@ -8,6 +8,7 @@ function Column({ itemList, colTitle, color }) {
 
     const openAddNewTaskModal = () => {
         setShowModal(true);
+        console.log("open sesame!")
     };
 
     const addItem = (task, column) => {
