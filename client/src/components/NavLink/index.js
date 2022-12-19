@@ -3,6 +3,9 @@ import LogoNav from "../../assets/logos/check-logo-nav.png";
 import Auth from "../../utils/auth";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { JOIN_GROUP } from "../../utils/mutations";
+
 
 // Here we are using object destructuring assignment to pluck off our variables from the props object
 // We assign them to their own variable names
@@ -11,6 +14,21 @@ function NavTabs() {
 
   const [currentPage, setCurrentPage] = useState("Login");
   const handlePageChange = (page) => setCurrentPage(page);
+
+  const [joinGroup, {error}] = useMutation(JOIN_GROUP)
+  const handleJoin = async(event) => {
+    event.preventDefault();
+    console.log(event.target.firstChild.value)
+    const groupId = event.target.firstChild.value
+    try{
+      joinGroup({
+        variables: { groupId: groupId }
+      })
+    } catch {
+      console.error({error})
+    }
+    
+  }
 
   return (
     <nav className="bg-slate-200 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
@@ -67,12 +85,14 @@ function NavTabs() {
               </svg>
               <span className="sr-only">Search icon</span>
             </div>
-            <input
+            <form type='submit' onSubmit={handleJoin}>
+              <input
               type="text"
               id="search-navbar"
               className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search for a group..."
             />
+            </form>
           </div>
           <button
             data-collapse-toggle="navbar-search"

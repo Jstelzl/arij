@@ -23,3 +23,10 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const JOIN_GROUP = gql`
+mutation($groupId: ID!){
+  joinGroup(groupId: $groupId) {
+    _id
+  }
+}`

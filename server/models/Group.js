@@ -13,10 +13,12 @@ const groupSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  members: [{
+  members: [
+    {
     type: Schema.Types.ObjectId,
     ref: "User",
-  }],
+    },
+  ],
   tickets: [
     {
       type: Schema.Types.ObjectId,
