@@ -3,14 +3,21 @@ import AddTask from "../AddTask";
 import Item from "../TaskItem";
 import "../../App.css";
 import EditTask from "../EditTask";
+import { useParams } from "react-router-dom";
 
-function Column({ itemList, colTitle, color }) {
+function Column({ itemList, colTitle, color}) {
   const [showModal, setShowModal] = useState(false);
+  const [addModal, setAddModal] = useState(false)
+  const { id: groupParam } = useParams();
 
   const openAddNewTaskModal = () => {
-    setShowModal(true);
+    setAddModal(true);
     console.log("open sesame!");
   };
+
+  const openEditTaskModal = () => {
+    setShowModal(true)
+  }
 
   const addItem = (task, column) => {
     console.log(task);
@@ -33,7 +40,7 @@ function Column({ itemList, colTitle, color }) {
       <div className="justify-center text-center md:container md:mx-auto">
         {itemList.map((i, index) => (
           <Item
-            openAddNewTaskModal={openAddNewTaskModal}
+            openAddNewTaskModal={openEditTaskModal}
             key={index}
             ticketTitle={i.ticketTitle}
             ticketBody={i.ticketBody}
@@ -43,16 +50,26 @@ function Column({ itemList, colTitle, color }) {
           />
         ))}
       </div>
-      {colTitle === "To Do" ? (
+      {colTitle === "To Do" && groupParam  ? (
         <div>
           <div>
-            {showModal && (
+            {addModal && (
               <AddTask
-                showModal={showModal}
-                setShowModal={setShowModal}
+                addModal={addModal}
+                setAddModal={setAddModal}
                 columnTitle={colTitle}
                 addItem={addItem}
               ></AddTask>
+            )}
+          </div>
+          <div>
+            {showModal && (
+              <EditTask
+                showModal={showModal}
+                setShowModal={setShowModal}
+                columnTitle={colTitle}
+                editItem={editItem}
+              ></EditTask>
             )}
           </div>
           <button

@@ -1,9 +1,22 @@
 import React, { useEffect, useState, Component } from "react";
 import Datepicker from "flowbite-datepicker/Datepicker";
+import { useParams } from "react-router-dom";
 
 function Modal({ setShowModal, columnTitle, editItem }) {
   const [task, setTask] = useState("");
-
+  const [formState, setFormState] = useState({ ticketTitle: '', TicketBody: '', urgencyLevel: '', dueBy: '', status:'' });
+  const handleChange = (event) => {
+    console.log("hi")
+    const { name, value } = event.target;
+    
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    console.log(formState)
+  };
+  const { id: groupParam } = useParams();
+  
   useEffect(() => {
     const datepickerEl = document?.getElementById("datepickerId");
     // console.log(datepickerEl);
@@ -24,7 +37,7 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                 Edit Task
               </h3>
               <form className="space-y-6" action="#">
-                <div>
+                <div >
                   <label
                     for="ticketTitle"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -37,6 +50,8 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                     id="ticketTitle"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     placeholder="Enter a title here"
+                    value={formState.ticketTitle}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -52,6 +67,9 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                     rows="4"
                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter a description here..."
+                    name="ticketBody"
+                    value={formState.ticketBody}
+                    onChange={handleChange}
                   ></textarea>
                 </div>
                 <div>
@@ -64,6 +82,9 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                   <select
                     id="urgencyLevel"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    name="urgencyLevel"
+                    value={formState.urgencyLevel}
+                    onChange={handleChange}
                   >
                     <option selected>Choose an urgency</option>
                     <option value="Low">Low</option>
@@ -87,6 +108,9 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                       // onClick={(e) => console.log(e.target.value)}
                       // onChange={(e) => console.log(e)}
                       id="datepickerId"
+                      name="dueBy"
+                      value={formState.dueBy}
+                      onChange={handleChange}
                     />
                     <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                       <svg
@@ -115,11 +139,14 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                   <select
                     id="urgencyLevel"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    name="status"
+                    value={formState.status}
+                    onChange={handleChange}
                   >
                     <option selected>Choose a completion status</option>
-                    <option value="Low">To Do</option>
-                    <option value="Medium">In Progress</option>
-                    <option value="High">Done</option>
+                    <option value="To Do">To Do</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Done">Done</option>
                   </select>
                 </div>
                 <div>

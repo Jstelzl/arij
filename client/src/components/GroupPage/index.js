@@ -33,14 +33,12 @@ function GroupPage() {
   const { loading, data } = useQuery(QUERY_GROUP, {
     variables: { groupId: groupParam },
   });
-  console.log(data, "hi");
 
   if (loading) {
     return <div>waiting</div>;
   }
 
   const tickets = data?.group.tickets;
-  console.log(tickets);
 
   const toDo = tickets.filter((x) => x.status === "To Do");
   const inProgress = tickets.filter((x) => x.status === "In Progress");
