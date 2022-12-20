@@ -5,14 +5,12 @@ import "../../App.css";
 import EditTask from "../EditTask";
 
 function Column({ itemList, colTitle, color }) {
-
   const [showModal, setShowModal] = useState(false);
 
   const openAddNewTaskModal = () => {
     setShowModal(true);
     console.log("open sesame!");
   };
-
 
   const addItem = (task, column) => {
     console.log(task);
@@ -31,7 +29,6 @@ function Column({ itemList, colTitle, color }) {
       <header className="text-center text-blue-800">
         <h3>{colTitle}</h3>
       </header>
-
 
       <div className="justify-center text-center md:container md:mx-auto">
         {itemList.map((i, index) => (

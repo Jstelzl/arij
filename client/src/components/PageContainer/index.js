@@ -20,10 +20,8 @@ export default function PageContainer() {
 
   const handlePageChange = (page) => setCurrentPage(page);
 
-
   return (
     <div>
-      
       {/* We are passing the currentPage from state and the function to update it */}
       <NavLink currentPage={currentPage} handlePageChange={handlePageChange} />
       {/* Here we are calling the renderPage method which will return a component  */}
