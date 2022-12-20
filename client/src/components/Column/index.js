@@ -4,10 +4,12 @@ import Item from '../TaskItem'
 import "../../App.css";
 
 function Column({ itemList, colTitle, color }) {
+    
     const [showModal, setShowModal] = useState(false);
 
     const openAddNewTaskModal = () => {
         setShowModal(true);
+        console.log(showModal)
         console.log("open sesame!")
     };
 
@@ -32,8 +34,12 @@ function Column({ itemList, colTitle, color }) {
                     itemList.map((i, index) => (
                         <Item
                             openAddNewTaskModal={openAddNewTaskModal}
+                            
                             key={index}
-                            data={i}
+                            ticketTitle={i.ticketTitle}
+                            ticketBody={i.ticketBody}
+                            urgencyLevel={i.urgencyLevel}
+                            dueBy={i.dueBy}
                             color={color}
                         />
                     ))
