@@ -28,15 +28,16 @@ const resolvers = {
         .populate("members");
     },
 
-    group: async (parent, { _id }) => {
-      return Group.findOne({ _id })
+    group: async (parent, args) => {
+      console.log(args)
+      return Group.findOne( {_id: args.groupId} )
         .populate("owner")
         .populate("tickets")
         .populate("members");
     },
 
-    ticket: async (parent, { _id }) => {
-      return Ticket.findOne({ _id });
+    ticket: async (parent, { groupId }) => {
+      return Ticket.findOne({ groupId });
     },
   },
 
