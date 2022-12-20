@@ -4,16 +4,14 @@ import { useParams } from "react-router-dom";
 
 function Modal({ setShowModal, columnTitle, editItem }) {
   const [task, setTask] = useState("");
-  const [formState, setFormState] = useState({ ticketTitle: '', TicketBody: '', urgencyLevel: '', dueBy: '', status:'' });
+  const [formState, setFormState] = useState({ ticketTitle: '', ticketBody: '', urgencyLevel: '', dueBy: '', status:'' });
   const handleChange = (event) => {
-    console.log("hi")
     const { name, value } = event.target;
     
     setFormState({
       ...formState,
       [name]: value,
     });
-    console.log(formState)
   };
   const { id: groupParam } = useParams();
   
@@ -96,21 +94,21 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Pick a due date for the task:
                   </label>
-                  <div className="relative w-95 items-center">
+                  <div className="relative w-95 items-center" name="dueBy">
                     <input
                       datepicker
                       datepicker-autohide
                       type="text"
                       className="items-center bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                       placeholder="Select due date"
-                      onSelect={(e) => console.log(e.target.value)}
+                      // onSelect={(e) => console.log(e.target.value)}
                       // onClick={(e) => dobHandler(e)}
                       // onClick={(e) => console.log(e.target.value)}
                       // onChange={(e) => console.log(e)}
                       id="datepickerId"
                       name="dueBy"
                       value={formState.dueBy}
-                      onChange={handleChange}
+                      onSelect={handleChange}
                     />
                     <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                       <svg

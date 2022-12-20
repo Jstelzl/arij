@@ -21,8 +21,8 @@ function Column({ itemList, colTitle, color}) {
 
   const addItem = (task, column) => {
     console.log(task);
-    itemList.push(task);
-    setShowModal(false);
+    // itemList.push(task);
+    setAddModal(false);
   };
 
   const editItem = (task, column) => {
