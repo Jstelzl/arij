@@ -33,8 +33,7 @@ function GroupPage() {
   const { loading, data } = useQuery(QUERY_GROUP, {
     variables: { groupId: groupParam },
   });
-  console.log(groupParam);
-  console.log(data);
+  console.log(data, "hi");
 
   if (loading) {
     return <div>waiting</div>;
@@ -50,7 +49,7 @@ function GroupPage() {
   return (
     <div className="content-center md:container md:mx-auto min-h-screen">
       <header className="text-center text-blue-900">
-        <h2 className="text-center p-2 pb-4">GroupName Tasks</h2>
+        <h2 className="text-center p-2 pb-4">{data.group.groupName} Tasks</h2>
       </header>
       <div className="gap-2 content-center md:columns-3">
         <div>

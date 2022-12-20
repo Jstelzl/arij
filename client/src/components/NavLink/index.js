@@ -215,33 +215,6 @@ function NavTabs() {
                       </Link>
                     </li>
                   ))}
-                  {/* <li>
-                    <a
-                      href=""
-                      onClick={() => handlePageChange("Group Page")}
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      group 1
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onClick={() => handlePageChange("Group Page")}
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      group 2
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      onClick={() => handlePageChange("Group Page")}
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      group 3
-                    </a>
-                  </li> */}
                 </ul>
               </div>
             </li>
