@@ -108,7 +108,7 @@ const resolvers = {
       await User.findByIdAndUpdate(
         { _id: context.user._id },
         { $push: { tickets: ticket._id } }
-      )
+      );
       console.log(ticket);
 
       return { ticket };

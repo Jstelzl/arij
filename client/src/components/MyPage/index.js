@@ -29,32 +29,24 @@ const mockData = [
   },
 ];
 
-
-
-
-
 function MyPage() {
-
-  const { loading, data } = useQuery(QUERY_ME)
-  console.log(data?.me)
-  if(loading) {
-    return (
-      <div>waiting</div>
-    )
+  const { loading, data } = useQuery(QUERY_ME);
+  console.log(data?.me);
+  if (loading) {
+    return <div>waiting</div>;
   }
-  const tickets = data?.me.tickets
-  console.log(tickets)
-  const toDo = tickets.filter(x => x.status === 'To Do')
-  const inProgress = tickets.filter(x => x.status === 'In Progress')
-  const done = tickets.filter(x => x.status === 'Done')
-
-  
 
   const loggedIn = Auth.loggedIn();
 
   if (!loggedIn) {
     return <Navigate to="/" />;
   }
+
+  const tickets = data?.me.tickets;
+  console.log(tickets);
+  const toDo = tickets.filter((x) => x.status === "To Do");
+  const inProgress = tickets.filter((x) => x.status === "In Progress");
+  const done = tickets.filter((x) => x.status === "Done");
 
   return (
     <div className="content-center md:container md:mx-auto min-h-screen">
