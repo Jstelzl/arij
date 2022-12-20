@@ -4,11 +4,15 @@ import Item from "../TaskItem";
 import "../../App.css";
 import EditTask from "../EditTask";
 import { useParams } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { ADD_TICKET } from "../../utils/mutations";
 
 function Column({ itemList, colTitle, color}) {
   const [showModal, setShowModal] = useState(false);
   const [addModal, setAddModal] = useState(false)
   const { id: groupParam } = useParams();
+
+  const [addTicket, {error}] = useMutation(ADD_TICKET)
 
   const openAddNewTaskModal = () => {
     setAddModal(true);
@@ -19,9 +23,14 @@ function Column({ itemList, colTitle, color}) {
     setShowModal(true)
   }
 
-  const addItem = (task, column) => {
-    console.log(task);
-    // itemList.push(task);
+  const addItem = (task) => {
+    try {
+      addTicket({
+        variables: {ticketTitle: task.ticketTitle, ticketBody: task.ticketBody, urgencyLevel: task.urgencyLevel, dueBy: task.dueBy, status: task.status, groupId: groupParam}
+      })
+    } catch(e) {
+      console.error(e)
+    }
     setAddModal(false);
   };
 
