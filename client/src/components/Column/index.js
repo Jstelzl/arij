@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddTask from "../AddTask";
 import Item from "../TaskItem";
 import "../../App.css";
+import EditTask from "../EditTask";
 
 function Column({ itemList, colTitle, color }) {
   const [showModal, setShowModal] = useState(false);
@@ -12,6 +13,12 @@ function Column({ itemList, colTitle, color }) {
   };
 
   const addItem = (task, column) => {
+    console.log(task);
+    itemList.push(task);
+    setShowModal(false);
+  };
+
+  const editItem = (task, column) => {
     console.log(task);
     itemList.push(task);
     setShowModal(false);
@@ -28,7 +35,10 @@ function Column({ itemList, colTitle, color }) {
           <Item
             openAddNewTaskModal={openAddNewTaskModal}
             key={index}
-            data={i}
+            ticketTitle={i.ticketTitle}
+            ticketBody={i.ticketBody}
+            urgencyLevel={i.urgencyLevel}
+            dueBy={i.dueBy}
             color={color}
           />
         ))}
@@ -54,7 +64,18 @@ function Column({ itemList, colTitle, color }) {
           </button>
         </div>
       ) : (
-        <div></div>
+        <div>
+          <div>
+            {showModal && (
+              <EditTask
+                showModal={showModal}
+                setShowModal={setShowModal}
+                columnTitle={colTitle}
+                editItem={editItem}
+              ></EditTask>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

@@ -52,7 +52,7 @@ const typeDefs = gql`
     addTicket(
       ticketTitle: String!
       ticketBody: String!
-      createdBy: String!
+      createdBy: String
       urgencyLevel: String!
       dueBy: String!
       status: String!

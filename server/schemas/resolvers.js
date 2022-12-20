@@ -89,11 +89,11 @@ const resolvers = {
       return { group };
     },
 
-    addTicket: async (parent, args) => {
+    addTicket: async (parent, args, context) => {
       const ticket = await Ticket.create({
         ticketTitle: args.ticketTitle,
         ticketBody: args.ticketBody,
-        createdBy: args.createdBy,
+        createdBy: context.user.username,
         urgencyLevel: args.urgencyLevel,
         dueBy: args.dueBy,
         status: args.status,
@@ -103,6 +103,11 @@ const resolvers = {
         { _id: args.groupId },
         { $push: { tickets: ticket._id } }
       );
+
+      await User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $push: { tickets: ticket._id } }
+      )
       console.log(ticket);
 
       return { ticket };
