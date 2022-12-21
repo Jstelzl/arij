@@ -22,22 +22,9 @@ function NavTabs() {
   const [currentPage, setCurrentPage] = useState("Login");
   const handlePageChange = (page) => setCurrentPage(page);
 
-  const [joinGroup, { error }] = useMutation(JOIN_GROUP);
   const { loading, data } = useQuery(QUERY_ME);
 
   const groups = data?.me.groups || [];
-
-  const handleJoin = async (event) => {
-    event.preventDefault();
-    const groupId = event.target.firstChild.value;
-    try {
-      joinGroup({
-        variables: { groupId: groupId },
-      });
-    } catch {
-      console.error({ error });
-    }
-  };
 
   return (
     <nav className="bg-slate-200 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
@@ -241,7 +228,6 @@ function NavTabs() {
               )}
             </li>
           </ul>
-
         </div>
       </div>
     </nav>
