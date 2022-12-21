@@ -1,4 +1,4 @@
-# arij
+# Arij
   
 Arij was designed with businesses and groups in mind. You can add tasks to a shared group board, set a due date and a priority level for each task, as well as adjust it’s completion status.
 
@@ -30,18 +30,21 @@ Intuitive and user friendly, Arij allows even the most scattered of us to remain
 
 ## Contributing
 
-Please fork to contribute.
+Please fork to contribute to this project.
 
 ## Tests
 
-No tests are included with this project.
+No tests are included with this project, but you are welcome to fork and add some.
 
 ## Questions
 
-If you have questions, please contact us on GitHub here: [APetersen11](https://github.com/APetersen11)
-[Jstelzel](https://github.com/Jstelzl)
-[ReeceDevenney](https://github.com/ReeceDevenney)
-[richielollis](https://github.com/richielollis)
+If you have questions, please contact us on GitHub here: <br>
+[ReeceDevenney](https://github.com/ReeceDevenney)<br>
+[richielollis](https://github.com/richielollis) <br>
+[APetersen11](https://github.com/APetersen11) <br>
+[Jstelzel](https://github.com/Jstelzl) <br>
+
+
 
 or by email here: [aptrsn11@gmail.com](mailto:aptrsn11@gmail.com)
 
