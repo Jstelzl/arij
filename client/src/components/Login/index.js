@@ -72,7 +72,7 @@ function Login() {
   return (
     <div className="w-full bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 min-h-screen">
       <ul
-        className=" flex flex-wrap text-sm font-medium text-blue-900 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800"
+        className=" flex flex-wrap text-sm font-medium text-blue-900 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 items-center justify-center"
         id="defaultTab"
         data-tabs-toggle="#defaultTabContent"
         role="tablist"
