@@ -51,12 +51,12 @@ function Column({ itemList, colTitle, color}) {
   };
 
   return (
-    <div className="justify-center content-center text-center md:container md:mx-auto border-2 rounded-md break-after-column">
-      <header className="text-center text-blue-800">
+    <div className="justify-center content-center text-center md:container md:mx-auto border-2 rounded-md break-after-column bg-slate-100">
+      <header className="text-center text-blue-800 bg-slate-100">
         <h3>{colTitle}</h3>
       </header>
 
-      <div className="justify-center text-center md:container md:mx-auto">
+      <div className="justify-center text-center md:container md:mx-auto bg-slate-100">
         {itemList.map((i, index) => (
           <Item
             openAddNewTaskModal={openEditTaskModal}

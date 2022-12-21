@@ -20,10 +20,10 @@ function Item({ ticketTitle, ticketBody, urgencyLevel, dueBy, setActiveId, setSh
     <div className="max-w-sm w-full lg:max-w-full lg:flex justify-center">
       <div className="h-48 lg:h-auto lg:w-3/4 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden py-2">
         <div
-          className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+          className="border-r border-b border-l border-slate-300 lg:border-slate-300 lg:border-t lg:border-slate-300 bg-slate-50 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
           style={{ borderTop: `4px solid ${map1[urgencyLevel]}` }}
         >
-          <button onClick={openEditTaskModal}>
+          <button className="ml-auto text-blue-900" onClick={openEditTaskModal}>
             <svg
               className="w-6 h-6"
               fill="none"
@@ -39,9 +39,9 @@ function Item({ ticketTitle, ticketBody, urgencyLevel, dueBy, setActiveId, setSh
               ></path>
             </svg>
           </button>
-          <div>{ticketTitle}</div>
-          <div>{ticketBody}</div>
-          <div>{timeConverter(dueBy)}</div>
+          <div className="text-blue-900 text-xl font-semibold uppercase leading-relaxed">{ticketTitle}</div>
+          <div className="text-blue-700 text-lg leading-relaxed">{ticketBody}</div>
+          <div className="text-blue-500 text-sm leading-relaxed"> <span className="font-semibold">Due by:</span> {timeConverter(dueBy)}</div>
         </div>
       </div>
     </div>

@@ -45,7 +45,7 @@ function GroupPage() {
   const done = tickets.filter((x) => x.status === "Done");
 
   return (
-    <div className="content-center md:container md:mx-auto min-h-screen">
+    <div className="content-center md:container md:mx-auto min-h-screen bg-slate-100">
       <header className="text-center text-blue-900">
         <h2 className="text-center p-2 pb-4">{data.group.groupName} Tasks</h2>
       </header>
