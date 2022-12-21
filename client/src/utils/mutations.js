@@ -37,3 +37,10 @@ mutation($ticketTitle: String!, $ticketBody: String!, $urgencyLevel: String!, $d
     _id
   }
 }`
+
+export const EDIT_TICKET = gql`
+mutation($ticketId: ID!, $status: String!, $ticketTitle: String!, $ticketBody: String!, $urgencyLevel: String!, $dueBy: String!){
+  editTicket(ticketId: $ticketId, status: $status, ticketTitle: $ticketTitle, ticketBody: $ticketBody, urgencyLevel: $urgencyLevel, dueBy: $dueBy) {
+    _id
+  }
+}`

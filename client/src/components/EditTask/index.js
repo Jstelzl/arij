@@ -1,10 +1,21 @@
 import React, { useEffect, useState, Component } from "react";
 import Datepicker from "flowbite-datepicker/Datepicker";
 import { useParams } from "react-router-dom";
+import { timeConverter } from "../../utils/helpers";
 
-function Modal({ setShowModal, columnTitle, editItem }) {
+
+function Modal({ setShowModal, columnTitle, editItem, test, activeTask }) {
   const [task, setTask] = useState("");
   const [formState, setFormState] = useState({ ticketTitle: '', ticketBody: '', urgencyLevel: '', dueBy: '', status:'' });
+  useEffect(() => {
+    if (activeTask) {
+      setFormState({...activeTask, dueBy: timeConverter(activeTask.dueBy)})
+    }
+  }, [])
+  
+  
+  console.log(activeTask, "hi asdf")
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     
@@ -148,7 +159,7 @@ function Modal({ setShowModal, columnTitle, editItem }) {
                   </select>
                 </div>
                 <div>
-                <button type="button" onClick={() => editItem(task)} className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Submit</button>
+                <button type="button" onClick={() => editItem(formState, activeTask._id)} className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Submit</button>
                 <button type="button" onClick={() => setShowModal(false)} className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800">Cancel</button>
                 </div>
               </form>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddTask from "../AddTask";
 import Item from "../TaskItem";
 import "../../App.css";
@@ -6,13 +6,17 @@ import EditTask from "../EditTask";
 import { useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_TICKET } from "../../utils/mutations";
+import { EDIT_TICKET } from "../../utils/mutations";
 
 function Column({ itemList, colTitle, color}) {
   const [showModal, setShowModal] = useState(false);
   const [addModal, setAddModal] = useState(false)
+  const [activeId, setActiveId] = useState()
+  useEffect(() => console.log(activeId), [activeId])
   const { id: groupParam } = useParams();
 
   const [addTicket, {error}] = useMutation(ADD_TICKET)
+  const [editTicket] = useMutation(EDIT_TICKET)
 
   const openAddNewTaskModal = () => {
     setAddModal(true);
@@ -34,9 +38,15 @@ function Column({ itemList, colTitle, color}) {
     setAddModal(false);
   };
 
-  const editItem = (task, column) => {
-    console.log(task);
-    itemList.push(task);
+  const editItem = (task) => {
+    console.log(task.ticketBody, "hi")
+    try{
+      editTicket({
+        variables: {ticketTitle: task.ticketTitle, ticketBody: task.ticketBody, urgencyLevel: task.urgencyLevel, dueBy: task.dueBy, status: task.status, ticketId: task._id}
+      })
+    } catch(e){
+      console.error(e)
+    }
     setShowModal(false);
   };
 
@@ -50,7 +60,10 @@ function Column({ itemList, colTitle, color}) {
         {itemList.map((i, index) => (
           <Item
             openAddNewTaskModal={openEditTaskModal}
+            setActiveId={setActiveId}
+            setShowModal={setShowModal}
             key={index}
+            index={index}
             ticketTitle={i.ticketTitle}
             ticketBody={i.ticketBody}
             urgencyLevel={i.urgencyLevel}
@@ -78,6 +91,7 @@ function Column({ itemList, colTitle, color}) {
                 setShowModal={setShowModal}
                 columnTitle={colTitle}
                 editItem={editItem}
+                activeTask={itemList[activeId]}
               ></EditTask>
             )}
           </div>
@@ -98,6 +112,7 @@ function Column({ itemList, colTitle, color}) {
                 setShowModal={setShowModal}
                 columnTitle={colTitle}
                 editItem={editItem}
+                activeTask={itemList[activeId]}
               ></EditTask>
             )}
           </div>
