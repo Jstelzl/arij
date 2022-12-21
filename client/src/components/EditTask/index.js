@@ -1,10 +1,21 @@
 import React, { useEffect, useState, Component } from "react";
 import Datepicker from "flowbite-datepicker/Datepicker";
 import { useParams } from "react-router-dom";
+import { timeConverter } from "../../utils/helpers";
 
-function Modal({ setAddModal, columnTitle, addItem }) {
-  // const [task, setTask] = useState("");
+
+function Modal({ setShowModal, columnTitle, editItem, test, activeTask }) {
+  const [task, setTask] = useState("");
   const [formState, setFormState] = useState({ ticketTitle: '', ticketBody: '', urgencyLevel: '', dueBy: '', status:'' });
+  useEffect(() => {
+    if (activeTask) {
+      setFormState({...activeTask, dueBy: timeConverter(activeTask.dueBy)})
+    }
+  }, [])
+  
+  
+  console.log(activeTask, "hi asdf")
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     
@@ -12,10 +23,9 @@ function Modal({ setAddModal, columnTitle, addItem }) {
       ...formState,
       [name]: value,
     });
-    console.log(formState)
   };
   const { id: groupParam } = useParams();
-
+  
   useEffect(() => {
     const datepickerEl = document?.getElementById("datepickerId");
     // console.log(datepickerEl);
@@ -33,10 +43,10 @@ function Modal({ setAddModal, columnTitle, addItem }) {
               id="ticket-modal"
             >
               <h3 className="mb-4 text-xl text-center font-medium text-gray-900 dark:text-white">
-                Add a Task
+                Edit Task
               </h3>
               <form className="space-y-6" action="#">
-                <div>
+                <div >
                   <label
                     for="ticketTitle"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -95,13 +105,14 @@ function Modal({ setAddModal, columnTitle, addItem }) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Pick a due date for the task:
                   </label>
-                  <div className="relative w-95 items-center">
+                  <div className="relative w-95 items-center" name="dueBy">
                     <input
                       datepicker
                       datepicker-autohide
                       type="text"
                       className="items-center bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                       placeholder="Select due date"
+                      // onSelect={(e) => console.log(e.target.value)}
                       // onClick={(e) => dobHandler(e)}
                       // onClick={(e) => console.log(e.target.value)}
                       // onChange={(e) => console.log(e)}
@@ -119,9 +130,9 @@ function Modal({ setAddModal, columnTitle, addItem }) {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fillRule="evenodd"
+                          fill-rule="evenodd"
                           d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                          clipRule="evenodd"
+                          clip-rule="evenodd"
                         ></path>
                       </svg>
                     </div>
@@ -148,8 +159,8 @@ function Modal({ setAddModal, columnTitle, addItem }) {
                   </select>
                 </div>
                 <div>
-                <button type="button" onClick={() => addItem(formState)} className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Submit</button>
-                <button type="button" onClick={() => setAddModal(false)} className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800">Cancel</button>
+                <button type="button" onClick={() => editItem(formState, activeTask._id)} className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">Submit</button>
+                <button type="button" onClick={() => setShowModal(false)} className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800">Cancel</button>
                 </div>
               </form>
             </div>
