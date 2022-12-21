@@ -30,3 +30,17 @@ mutation($groupId: ID!){
     _id
   }
 }`
+
+export const ADD_TICKET = gql`
+mutation($ticketTitle: String!, $ticketBody: String!, $urgencyLevel: String!, $dueBy: String!, $status: String!, $groupId: ID!){
+  addTicket(ticketTitle: $ticketTitle, ticketBody: $ticketBody, urgencyLevel: $urgencyLevel, dueBy: $dueBy, status: $status, groupId: $groupId) {
+    _id
+  }
+}`
+
+export const EDIT_TICKET = gql`
+mutation($ticketId: ID!, $status: String!, $ticketTitle: String!, $ticketBody: String!, $urgencyLevel: String!, $dueBy: String!){
+  editTicket(ticketId: $ticketId, status: $status, ticketTitle: $ticketTitle, ticketBody: $ticketBody, urgencyLevel: $urgencyLevel, dueBy: $dueBy) {
+    _id
+  }
+}`

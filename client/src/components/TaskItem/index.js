@@ -3,11 +3,16 @@ import "../../App.css";
 import { timeConverter } from "../../utils/helpers";
 // import Draggable from 'react-draggable';
 
-function Item({ ticketTitle, ticketBody, urgencyLevel, dueBy, openAddNewTaskModal }) {
+function Item({ ticketTitle, ticketBody, urgencyLevel, dueBy, setActiveId, setShowModal, index }) {
   const map1 = {
     High: "red",
     Medium: "yellow",
     Low: "green"
+  }
+
+  const openEditTaskModal = () => {
+    setShowModal(true)
+    setActiveId(index)
   }
 
   return (
@@ -18,7 +23,7 @@ function Item({ ticketTitle, ticketBody, urgencyLevel, dueBy, openAddNewTaskModa
           className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
           style={{ borderTop: `4px solid ${map1[urgencyLevel]}` }}
         >
-          <button onClick={openAddNewTaskModal}>
+          <button onClick={openEditTaskModal}>
             <svg
               className="w-6 h-6"
               fill="none"

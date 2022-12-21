@@ -30,6 +30,7 @@ const mockData = [
 ];
 
 function MyPage() {
+  
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data?.me);
   if (loading) {
@@ -43,7 +44,6 @@ function MyPage() {
   }
 
   const tickets = data?.me.tickets;
-  console.log(tickets);
   const toDo = tickets.filter((x) => x.status === "To Do");
   const inProgress = tickets.filter((x) => x.status === "In Progress");
   const done = tickets.filter((x) => x.status === "Done");

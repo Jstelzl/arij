@@ -26,11 +26,9 @@ function NavTabs() {
   const { loading, data } = useQuery(QUERY_ME);
 
   const groups = data?.me.groups || [];
-  console.log(groups);
 
   const handleJoin = async (event) => {
     event.preventDefault();
-    console.log(event.target.firstChild.value);
     const groupId = event.target.firstChild.value;
     try {
       joinGroup({

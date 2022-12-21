@@ -4,6 +4,7 @@ export const QUERY_ME = gql`
   query {
     me {
       tickets {
+        _id
         ticketTitle
         ticketBody
         status
@@ -23,6 +24,7 @@ export const QUERY_GROUP = gql`
     group(groupId: $groupId) {
       groupName
       tickets {
+        _id
         ticketTitle
         ticketBody
         status

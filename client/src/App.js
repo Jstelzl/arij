@@ -39,6 +39,7 @@ const client = new ApolloClient({
 //   const handlePageChange = (page) => setCurrentPage(page);
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>
