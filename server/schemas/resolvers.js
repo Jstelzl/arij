@@ -18,7 +18,8 @@ const resolvers = {
     },
 
     users: async () => {
-      return User.find();
+      return User.find().populate("tickets")
+
     },
 
     groups: async () => {
@@ -117,7 +118,11 @@ const resolvers = {
     editTicket: async (parent, args) => {
       const updateTicket = await Ticket.findOneAndUpdate(
         { _id: args.ticketId },
-        { status: args.status },
+        { status: args.status,
+          ticketTitle: args.ticketTitle,
+          ticketBody: args.ticketBody,
+          dueBy: args.dueBy,
+          urgencyLevel: args.urgencyLevel },
         { new: true }
       );
       console.log(updateTicket);
