@@ -15,8 +15,8 @@ const groupSchema = new Schema({
   },
   members: [
     {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
   ],
   tickets: [

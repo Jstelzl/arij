@@ -1,12 +1,14 @@
 import React, { useState, useRef } from "react";
 import "../../App.css";
 import { useMutation } from "@apollo/client";
-import { JOIN_GROUP } from "../../utils/mutations";
+import { JOIN_GROUP, ADD_GROUP } from "../../utils/mutations";
 
 function ManageGroupsPage() {
   const [joinGroup, { error }] = useMutation(JOIN_GROUP);
+  const [addGroup] = useMutation(ADD_GROUP);
 
   const inputEL = useRef(null);
+  const groupEL = useRef(null);
 
   const handleJoin = async (event) => {
     event.preventDefault();
@@ -18,6 +20,14 @@ function ManageGroupsPage() {
     } catch {
       console.error({ error });
     }
+  };
+
+  const handleAdd = async (event) => {
+    event.preventDefault();
+    console.log(groupEL.current.value);
+    addGroup({
+      variables: { groupName: groupEL.current.value },
+    });
   };
 
   return (
@@ -95,7 +105,7 @@ function ManageGroupsPage() {
             Looking to start a new group? You're in the right place!
           </p>
 
-          <form>
+          <form onSubmit={handleAdd}>
             <div className="mb-6">
               <label
                 for="email"
@@ -104,7 +114,8 @@ function ManageGroupsPage() {
                 Enter Your Groups Name
               </label>
               <input
-                type="email"
+                ref={groupEL}
+                type="text"
                 id="email"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Group Name..."

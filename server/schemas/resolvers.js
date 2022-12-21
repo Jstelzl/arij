@@ -18,8 +18,7 @@ const resolvers = {
     },
 
     users: async () => {
-      return User.find().populate("tickets")
-
+      return User.find().populate("tickets");
     },
 
     groups: async () => {
@@ -30,8 +29,8 @@ const resolvers = {
     },
 
     group: async (parent, args) => {
-      console.log(args)
-      return Group.findOne( {_id: args.groupId} )
+      console.log(args);
+      return Group.findOne({ _id: args.groupId })
         .populate("owner")
         .populate("tickets")
         .populate("members");
@@ -86,7 +85,13 @@ const resolvers = {
         owner: context.user._id,
         members: context.user._id,
       });
-      console.log(group);
+
+      await User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { groups: group._id } }
+      );
+
+      console.log(group, "IS ID HERE");
 
       return { group };
     },
@@ -118,11 +123,13 @@ const resolvers = {
     editTicket: async (parent, args) => {
       const updateTicket = await Ticket.findOneAndUpdate(
         { _id: args.ticketId },
-        { status: args.status,
+        {
+          status: args.status,
           ticketTitle: args.ticketTitle,
           ticketBody: args.ticketBody,
           dueBy: args.dueBy,
-          urgencyLevel: args.urgencyLevel },
+          urgencyLevel: args.urgencyLevel,
+        },
         { new: true }
       );
       console.log(updateTicket);
