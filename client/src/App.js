@@ -15,6 +15,7 @@ import Login from "./components/Login";
 import MyPage from "./components/MyPage";
 import GroupPage from "./components/GroupPage";
 import DataPage from "./components/DataPage";
+import ManageGroupsPage from "./components/ManageGroupsPage";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -48,6 +49,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/my-tasks" element={<MyPage />} />
           <Route path="/group/:id" element={<GroupPage />} />
+          <Route path="/manage-groups" element={<ManageGroupsPage />} />
         </Routes>
         <Footer />
       </Router>
