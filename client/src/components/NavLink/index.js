@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { JOIN_GROUP } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
+import CreateGroup from "../CreateGroup";
 
 // Here we are using object destructuring assignment to pluck off our variables from the props object
 // We assign them to their own variable names
@@ -19,6 +20,14 @@ function NavTabs() {
   const { loading, data } = useQuery(QUERY_ME);
 
   const groups = data?.me.groups || [];
+
+  const [showModal, setShowModal] = useState(false);
+  const [addModal, setAddModal] = useState(false)
+
+  const openGroupModal = () => {
+    setAddModal(true);
+    console.log("open sesame!");
+  };
 
   const handleJoin = async (event) => {
     event.preventDefault();
@@ -154,7 +163,7 @@ function NavTabs() {
                 className={
                   currentPage === "MyPage"
                     ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white"
-                    : "block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-500 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    : "block py-2 pl-3 pr-4 text-blue-700 rounded hover:bg-blue-700 md:hover:bg-transparent md:hover:text-slate-500 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 }
               >
                 <Link to={"/my-tasks"}>My Tasks</Link>
