@@ -5,6 +5,7 @@ import Login from "../Login";
 import MyPage from "../MyPage";
 import GroupPage from "../GroupPage";
 import DataPage from "../DataPage";
+import ContactUs from "../ContactPage";
 
 export default function PageContainer() {
   const [currentPage, setCurrentPage] = useState("Login");
@@ -15,6 +16,7 @@ export default function PageContainer() {
     if (currentPage === "Group Page") return <GroupPage />;
     if (currentPage === "Log Out") return <Login />;
     if (currentPage === "Data Page") return <DataPage />;
+    if (currentPage === "Contact Us") return <ContactUs />;
     return <MyPage />;
   };
 
